@@ -29,7 +29,7 @@ export default function Industries() {
       {/* Background glow shadow */}
       <div className="absolute top-[40%] left-[-10%] w-[300px] h-[300px] bg-secondary/[0.02] rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+      <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">

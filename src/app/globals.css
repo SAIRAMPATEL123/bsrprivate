@@ -1,41 +1,44 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0f172a;
-  --color-secondary: #2563eb;
-  --color-accent: #0284c7;
+  --color-primary: #042f2e;
+  --color-secondary: #0d9488;
+  --color-accent: #14b8a6;
+  --color-brand-dark: #09545e;
+  --color-brand-mid: #0d9488;
+  --color-brand-light: #2dd4bf;
+  --color-brand-mint: #34d399;
   --color-bg-light: #ffffff;
-  --color-card-light: #f8fafc;
-  --color-border-light: #e2e8f0;
-  --color-text-secondary: #475569;
+  --color-card-light: #ffffff;
+  --color-border-light: #f1f5f9;
+  --color-text-secondary: #64748b;
 
-  --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-geist-mono), monospace;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #090d16;
 }
 
-/* Custom Scrollbar for Light Theme */
+/* Minimal Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f8fafc;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #cbd5e1;
-  border: 1px solid #f1f5f9;
-  border-radius: 4px;
+  border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #0d9488;
 }
 
 /* Lenis smooth scroll */
@@ -65,45 +68,29 @@ body {
   color: var(--foreground);
   overflow-x: hidden;
   position: relative;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Premium gradient utilities */
-.bg-gradient-text {
-  background: linear-gradient(135deg, #0f172a 30%, #2563eb 80%, #0284c7 100%);
+/* Crisp Clean Focus outlines */
+:focus-visible {
+  outline: 2px solid #0d9488;
+  outline-offset: 2px;
+}
+
+/* Brand logo gradient utilities */
+.text-brand-gradient {
+  background: linear-gradient(135deg, #09545e 0%, #0d9488 50%, #10b981 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
-.bg-gradient-accent {
-  background: linear-gradient(135deg, #2563eb 0%, #0284c7 100%);
+.bg-brand-gradient {
+  background: linear-gradient(135deg, #09545e 0%, #0d9488 100%);
 }
 
-.bg-gradient-radial {
-  background: radial-gradient(circle at center, var(--tw-gradient-stops));
-}
-
-/* Crisp structure card styling */
-.glass-panel {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.glass-panel-accent {
-  background: #f0f7ff;
-  border: 1px solid #cbd5e1;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.glow-card-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glow-card-hover:hover {
-  border-color: #cbd5e1;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-  transform: translateY(-2px);
+.bg-brand-accent {
+  background: linear-gradient(135deg, #0d9488 0%, #34d399 100%);
 }
 
 /* Infinite Logo Slider */
@@ -111,59 +98,16 @@ body {
   from {
     transform: translateX(0);
   }
-
   to {
     transform: translateX(-50%);
   }
 }
 
 .animate-infinite-scroll {
-  animation: infinite-scroll 35s linear infinite;
+  animation: infinite-scroll 45s linear infinite;
   will-change: transform;
 }
 
 .animate-infinite-scroll:hover {
   animation-play-state: paused;
-}
-
-/* Light Theme Cyber Grid & Premium Ambient Glows */
-.light-landing-theme {
-  background-color: #ffffff;
-  background-image: 
-    radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px),
-    radial-gradient(rgba(37, 99, 235, 0.025) 2px, transparent 2px);
-  background-size: 24px 24px, 120px 120px;
-  background-position: 0 0, 0 0;
-  position: relative;
-}
-
-.light-landing-theme::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    radial-gradient(circle at 15% 15%, rgba(37, 99, 235, 0.04) 0%, transparent 35%),
-    radial-gradient(circle at 85% 75%, rgba(0, 217, 255, 0.04) 0%, transparent 40%),
-    radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.02) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Soft White Frosted Glass Cards */
-.light-glass-card {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03), 0 2px 8px -1px rgba(15, 23, 42, 0.02);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.light-glass-card:hover {
-  background: rgba(255, 255, 255, 0.9);
-  border-color: rgba(37, 99, 235, 0.2);
-  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.08), 0 8px 16px -8px rgba(15, 23, 42, 0.04);
-  transform: translateY(-2px);
 }

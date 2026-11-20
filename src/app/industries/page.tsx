@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import Industries from "@/components/Industries";
 import { HeartPulse, Banknote, ShoppingBag, ShieldAlert, HelpCircle, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
@@ -70,14 +68,12 @@ const industryFaqs = [
 
 export default function IndustriesPage() {
   return (
-    <div className="light-landing-theme bg-white text-slate-900 min-h-screen">
-      <Navbar />
-      
-      <main className="flex-grow pt-24">
+    <div className="bg-white text-slate-900 min-h-screen">
+      <main className="flex-grow">
         {/* Subpage Hero */}
         <section className="relative py-20 overflow-hidden bg-white border-b border-slate-200/80">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center lg:text-left">
+          <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10 text-center lg:text-left">
             <div className="max-w-3xl">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-3">
                 Target Verticals
@@ -98,7 +94,7 @@ export default function IndustriesPage() {
 
         {/* Industry Detailed Spotlights */}
         <section className="py-20 bg-white relative border-t border-slate-200/80">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-2">
                 Deep Dives
@@ -141,7 +137,7 @@ export default function IndustriesPage() {
 
         {/* Compliance & Standards Section */}
         <section className="py-20 bg-white border-y border-slate-200/80 relative">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <ShieldAlert className="w-8 h-8 text-secondary mx-auto mb-3 animate-pulse" />
               <h2 className="text-3xl font-extrabold font-sans tracking-tight text-slate-950">
@@ -200,8 +196,8 @@ export default function IndustriesPage() {
               Book a consultation with our solution architects to structure a compliant development roadmap aligned with HIPAA, SOC2, or PCI requirements.
             </p>
             <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 mt-2 rounded-xl bg-slate-955 text-white font-semibold hover:bg-slate-900 transition-colors text-sm shadow-sm cursor-pointer"
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3.5 mt-2 rounded-xl bg-slate-900 text-white font-semibold hover:bg-blue-600 transition-colors text-sm shadow-sm cursor-pointer"
             >
               Discuss Compliance Specs
               <ArrowRight className="w-4 h-4 text-white" />
@@ -209,8 +205,6 @@ export default function IndustriesPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }
