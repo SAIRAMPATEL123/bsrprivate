@@ -1,77 +1,50 @@
 "use client";
 
+import { motion } from "framer-motion";
+
 export default function TrustedBy() {
-  const brands = [
-    { name: "Apex Dynamics", svg: (
-      <svg className="h-6 fill-current text-slate-400 hover:text-slate-900 transition-colors duration-250" viewBox="0 0 120 30" xmlns="http://www.w3.org/2000/svg">
-        <path d="M10 20 L20 5 L30 20 L25 20 L20 12 L15 20 Z" />
-        <text x="38" y="20" className="font-bold text-[12px] tracking-widest font-sans">APEX</text>
-      </svg>
-    )},
-    { name: "Vortex Data", svg: (
-      <svg className="h-6 fill-current text-slate-400 hover:text-slate-900 transition-colors duration-250" viewBox="0 0 140 30" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="15" cy="15" r="8" stroke="currentColor" strokeWidth="2.5" fill="none" strokeDasharray="3 3" />
-        <text x="32" y="20" className="font-bold text-[12px] tracking-widest font-sans">VORTEX</text>
-      </svg>
-    )},
-    { name: "Cognitex AI", svg: (
-      <svg className="h-6 fill-current text-slate-400 hover:text-slate-900 transition-colors duration-250" viewBox="0 0 140 30" xmlns="http://www.w3.org/2000/svg">
-        <rect x="5" y="7" width="16" height="16" rx="3" stroke="currentColor" strokeWidth="2.5" fill="none" />
-        <circle cx="13" cy="15" r="2.5" />
-        <text x="28" y="20" className="font-bold text-[12px] tracking-widest font-sans">COGNITEX</text>
-      </svg>
-    )},
-    { name: "Synthetix Cloud", svg: (
-      <svg className="h-6 fill-current text-slate-400 hover:text-slate-900 transition-colors duration-250" viewBox="0 0 150 30" xmlns="http://www.w3.org/2000/svg">
-        <path d="M8 20 L15 10 L22 20 Z" stroke="currentColor" strokeWidth="2" fill="none" />
-        <path d="M15 20 L22 10 L29 20 Z" stroke="currentColor" strokeWidth="2" fill="none" />
-        <text x="36" y="20" className="font-bold text-[12px] tracking-widest font-sans">SYNTHETIX</text>
-      </svg>
-    )},
-    { name: "Quantum Labs", svg: (
-      <svg className="h-6 fill-current text-slate-400 hover:text-slate-900 transition-colors duration-250" viewBox="0 0 140 30" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="15" cy="15" r="7" fill="none" stroke="currentColor" strokeWidth="2.5" />
-        <line x1="8" y1="15" x2="22" y2="15" stroke="currentColor" strokeWidth="2" />
-        <line x1="15" y1="8" x2="15" y2="22" stroke="currentColor" strokeWidth="2" />
-        <text x="30" y="20" className="font-bold text-[12px] tracking-widest font-sans">QUANTUM</text>
-      </svg>
-    )},
-    { name: "Chronos Inc", svg: (
-      <svg className="h-6 fill-current text-slate-400 hover:text-slate-900 transition-colors duration-250" viewBox="0 0 130 30" xmlns="http://www.w3.org/2000/svg">
-        <rect x="5" y="5" width="18" height="18" rx="9" stroke="currentColor" strokeWidth="2.5" fill="none" />
-        <line x1="14" y1="14" x2="14" y2="9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <line x1="14" y1="14" x2="18" y2="14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        <text x="32" y="20" className="font-bold text-[12px] tracking-widest font-sans">CHRONOS</text>
-      </svg>
-    )},
+  const domains = [
+    { name: "Financial Ledger Systems", spec: "12,000+ tx/sec" },
+    { name: "Clinical Data Pipelines", spec: "HIPAA Compliant" },
+    { name: "Autonomous AI RAG Engines", spec: "Private VPC Inferences" },
+    { name: "Headless Global Commerce", spec: "Edge Distributed" },
+    { name: "Industrial IoT Streaming", spec: "40M+ Daily Pings" },
+    { name: "Zero-Trust Service Meshes", spec: "SOC2 Type II" },
   ];
 
   return (
-    <section className="py-12 bg-slate-50 border-y border-slate-200/80 relative overflow-hidden select-none">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-6 flex justify-center lg:justify-start">
-        <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">
-          Trusted by Technology Pioneers
-        </span>
-      </div>
+    <section className="py-8 sm:py-10 bg-slate-50/60 border-b border-slate-100 select-none overflow-hidden">
+      <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-5 sm:gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: -15 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-xs font-semibold uppercase tracking-wider text-slate-400 shrink-0 font-mono"
+          >
+            Engineered Domains
+          </motion.div>
 
-      {/* Overflow slider container */}
-      <div className="flex w-[200%] gap-12 relative overflow-hidden [mask-image:linear-gradient(to_right,transparent_0%,#000_10%,#000_90%,transparent_100%)]">
-        {/* Scroller Group 1 */}
-        <div className="flex items-center justify-around min-w-full gap-8 animate-infinite-scroll shrink-0">
-          {brands.map((brand, idx) => (
-            <div key={`brand-1-${idx}`} className="flex items-center justify-center py-1">
-              {brand.svg}
-            </div>
-          ))}
-        </div>
-
-        {/* Scroller Group 2 (Duplicate for loop) */}
-        <div className="flex items-center justify-around min-w-full gap-8 animate-infinite-scroll shrink-0" aria-hidden="true">
-          {brands.map((brand, idx) => (
-            <div key={`brand-2-${idx}`} className="flex items-center justify-center py-1">
-              {brand.svg}
-            </div>
-          ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6 w-full">
+            {domains.map((d, index) => (
+              <motion.div
+                key={d.name}
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.06 }}
+                className="flex flex-col group cursor-default"
+              >
+                <span className="text-xs sm:text-sm font-medium text-slate-900 truncate group-hover:text-teal-700 transition-colors">
+                  {d.name}
+                </span>
+                <span className="text-[11px] font-mono text-slate-400 mt-0.5 group-hover:text-teal-600 transition-colors">
+                  {d.spec}
+                </span>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

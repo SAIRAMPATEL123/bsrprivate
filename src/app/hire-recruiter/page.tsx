@@ -1,6 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
 import HireRecruiter from "@/components/HireRecruiter";
 import { UserCheck, Search, Users, Award, HelpCircle, ArrowRight } from "lucide-react";
 import type { Metadata } from "next";
@@ -52,14 +49,12 @@ const recruiterFaqs = [
 
 export default function HireRecruiterPage() {
   return (
-    <div className="light-landing-theme bg-white text-slate-900 min-h-screen">
-      <Navbar />
-      
-      <main className="flex-grow pt-24">
+    <div className="bg-white text-slate-900 min-h-screen">
+      <main className="flex-grow">
         {/* Subpage Hero */}
         <section className="relative py-20 overflow-hidden bg-white border-b border-slate-200/80">
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center lg:text-left">
+          <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 relative z-10 text-center lg:text-left">
             <div className="max-w-3xl">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-3">
                 Talent Sourcing on Demand
@@ -80,7 +75,7 @@ export default function HireRecruiterPage() {
 
         {/* Recruiter Profiles Showcase */}
         <section className="py-20 bg-white relative border-t border-slate-200/80">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-2">
                 Expert Agents
@@ -131,7 +126,7 @@ export default function HireRecruiterPage() {
 
         {/* Process Roadmap */}
         <section className="py-20 bg-white border-y border-slate-200/80 relative">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-2">
                 Operational Framework
@@ -219,8 +214,8 @@ export default function HireRecruiterPage() {
               Book a meeting with our principal talent strategist to analyze your open hiring roadmap and allocate dedicated tech recruiters to your accounts.
             </p>
             <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 mt-2 rounded-xl bg-slate-955 text-white font-semibold hover:bg-slate-900 transition-colors text-sm shadow-sm cursor-pointer"
+              href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3.5 mt-2 rounded-xl bg-slate-900 text-white font-semibold hover:bg-blue-600 transition-colors text-sm shadow-sm cursor-pointer"
             >
               Consult Talent Strategist
               <ArrowRight className="w-4 h-4 text-white" />
@@ -228,8 +223,6 @@ export default function HireRecruiterPage() {
           </div>
         </section>
       </main>
-
-      <Footer />
     </div>
   );
 }

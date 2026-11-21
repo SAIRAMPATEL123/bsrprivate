@@ -1,163 +1,199 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import CustomCursor from "@/components/CustomCursor";
-import Services from "@/components/Services";
-import { Layers, Cpu, Code2, Server, HelpCircle, ArrowRight } from "lucide-react";
-import type { Metadata } from "next";
+import { Metadata } from "next";
 import Link from "next/link";
+import { servicesData } from "@/data/services";
+import {
+  Code2,
+  Cloud,
+  Brain,
+  Database,
+  Smartphone,
+  ShieldCheck,
+  ArrowRight,
+  Server,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Enterprise IT Services | SERENIQ",
-  description: "Explore our full suite of enterprise software development, artificial intelligence workflows, cloud orchestration, and data engineering solutions.",
+  title: "Engineering Services | Bespoke Software & Cloud Architectures",
+  description:
+    "Explore SERENIQ's full spectrum of enterprise software engineering, distributed systems, cloud orchestration, AI integrations, and data engineering capabilities.",
 };
 
-const techStacks = [
+const iconMap: Record<string, React.ReactNode> = {
+  Code2: <Code2 className="w-4 h-4 text-teal-700" />,
+  Cloud: <Cloud className="w-4 h-4 text-teal-700" />,
+  Brain: <Brain className="w-4 h-4 text-teal-700" />,
+  Database: <Database className="w-4 h-4 text-teal-700" />,
+  Smartphone: <Smartphone className="w-4 h-4 text-teal-700" />,
+  ShieldCheck: <ShieldCheck className="w-4 h-4 text-teal-700" />,
+};
+
+const techMatrices = [
   {
     category: "Languages & Frameworks",
-    items: ["TypeScript / React / Next.js", "Python / FastAPI / Django", "Go (Golang)", "Rust / C++ (High Performance)", "Java / Spring Boot"],
-    icon: <Code2 className="w-5 h-5 text-secondary" />,
+    icon: <Code2 className="w-4 h-4 text-teal-700" />,
+    items: ["TypeScript / React / Next.js", "Python / FastAPI", "Go (Golang)", "Rust", "Java / Spring Boot"],
   },
   {
     category: "AI & Machine Learning",
-    items: ["PyTorch / TensorFlow", "Hugging Face Models", "OpenAI / Claude API Integrations", "LangChain / Agentic Workflows", "Vector DBs (Pinecone, pgvector)"],
-    icon: <Cpu className="w-5 h-5 text-secondary" />,
+    icon: <Brain className="w-4 h-4 text-teal-700" />,
+    items: ["PyTorch / Transformers", "Private LLM Inferences (vLLM)", "Vector DBs (pgvector, Pinecone)", "LangChain / RAG Pipelines", "Multimodal OCR"],
   },
   {
-    category: "Cloud & Devops",
-    items: ["Amazon Web Services (AWS)", "Google Cloud Platform (GCP)", "Kubernetes (EKS/GKE)", "Terraform (IaC)", "CI/CD (GitHub Actions / GitLab)"],
-    icon: <Server className="w-5 h-5 text-secondary" />,
+    category: "Cloud & DevOps",
+    icon: <Server className="w-4 h-4 text-teal-700" />,
+    items: ["AWS / Google Cloud / Azure", "Kubernetes (EKS / GKE)", "Terraform & OpenTofu", "CI/CD (GitHub Actions, ArgoCD)", "Prometheus & Grafana"],
   },
   {
-    category: "Databases & Analytics",
-    items: ["PostgreSQL / TimescaleDB", "Snowflake / ClickHouse", "MongoDB / Redis / DynamoDB", "Apache Kafka (Streaming)", "Apache Spark / dbt"],
-    icon: <Layers className="w-5 h-5 text-secondary" />,
-  },
-];
-
-const serviceFaqs = [
-  {
-    q: "What software engineering standards do you follow?",
-    a: "We adhere strictly to clean code paradigms, SOLID principles, and comprehensive type safety. We enforce automated styling guidelines (ESLint/Prettier) and mandatory peer code reviews for all commits before merging.",
-  },
-  {
-    q: "How do you handle security and testing coverage?",
-    a: "We enforce test-driven development (TDD) principles where possible. We target a minimum of 85% unit test coverage using Jest/Vitest and perform automated integration/E2E testing using Playwright. All deployments pass vulnerability scanning audits.",
-  },
-  {
-    q: "Can you take over or modernize a legacy system?",
-    a: "Yes. Our digital transformation consulting services specialize in legacy application modernization, microservice decoupling, database migration (e.g., Oracle to PostgreSQL), and cloud migration with minimal downtime.",
+    category: "Data & Storage",
+    icon: <Database className="w-4 h-4 text-teal-700" />,
+    items: ["PostgreSQL 16+", "ClickHouse Columnar OLAP", "Snowflake Warehousing", "Apache Kafka Event Streaming", "Redis Caching"],
   },
 ];
 
 export default function ServicesPage() {
   return (
-    <div className="light-landing-theme bg-white text-slate-900 min-h-screen">
-      <Navbar />
-      
-      <main className="flex-grow pt-24">
-        {/* Subpage Hero */}
-        <section className="relative py-20 overflow-hidden bg-white border-b border-slate-200/80">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808006_1px,transparent_1px),linear-gradient(to_bottom,#80808006_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none" />
-          <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center lg:text-left">
-            <div className="max-w-3xl">
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-3">
-                Expertise & Capabilities
-              </span>
-              <h1 className="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-955 font-sans leading-tight">
-                Enterprise-Grade{" "}
-                <span className="bg-gradient-to-r from-slate-900 via-slate-950 to-secondary bg-clip-text text-transparent">Systems Engineering</span>
-              </h1>
-              <p className="text-slate-600 mt-4 text-sm sm:text-base leading-relaxed max-w-2xl font-normal">
-                We deliver robust systems engineering, cloud orchestration, and cognitive machine learning pipelines for high-throughput business applications.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Embedded Services Component */}
-        <Services />
-
-        {/* Tech Stack Matrix Section */}
-        <section className="py-20 bg-white relative border-t border-slate-200/80">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary block mb-2">
-                Tech Stack
-              </span>
-              <h2 className="text-3xl font-extrabold font-sans tracking-tight text-slate-950">
-                Supported Technologies & Tools
-              </h2>
-              <p className="text-slate-600 text-sm mt-3 font-normal">
-                We utilize modern, robust, and highly-maintainable language ecosystems and infrastructure models.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {techStacks.map((stack) => (
-                <div key={stack.category} className="light-glass-card p-7 rounded-2xl group">
-                  <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-center mb-5 group-hover:border-secondary/40 transition-colors">
-                    {stack.icon}
-                  </div>
-                  <h3 className="text-sm font-bold text-slate-900 mb-4 group-hover:text-secondary transition-colors">{stack.category}</h3>
-                  <ul className="flex flex-col gap-2.5">
-                    {stack.items.map((item) => (
-                      <li key={item} className="flex items-center gap-2.5 text-xs text-slate-700 font-normal">
-                        <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* FAQs */}
-        <section className="py-20 bg-white border-y border-slate-200/80 relative">
-          <div className="max-w-4xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <HelpCircle className="w-8 h-8 text-secondary mx-auto mb-3" />
-              <h2 className="text-2xl font-bold text-slate-955">Engineering Standards & FAQ</h2>
-              <p className="text-xs text-slate-500 mt-2 font-normal">Details on our codebase quality guarantees, delivery methodologies, and reviews</p>
-            </div>
-
-            <div className="flex flex-col gap-6">
-              {serviceFaqs.map((faq) => (
-                <div key={faq.q} className="bg-slate-50 border border-slate-200 p-6 rounded-xl hover:border-secondary/20 transition-colors">
-                  <h4 className="text-sm font-bold text-slate-900 flex items-start gap-2.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 shrink-0" />
-                    {faq.q}
-                  </h4>
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal mt-3 pl-4">
-                    {faq.a}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Page Block */}
-        <section className="py-20 bg-slate-50 text-slate-900 relative overflow-hidden border-t border-slate-200/80">
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_50%_120%,rgba(37,99,235,0.04),transparent)] pointer-events-none" />
-          <div className="max-w-5xl mx-auto px-6 text-center relative z-10 flex flex-col items-center gap-6">
-            <h2 className="text-3xl font-bold tracking-tight font-sans text-slate-955">Deploy Expert Engineering Teams</h2>
-            <p className="text-slate-600 text-sm max-w-xl leading-relaxed font-normal">
-              Connect with our solution architects to review your technical specs and schedule an evaluation call for your development roadmaps.
+    <div className="bg-white min-h-screen">
+      {/* Hero */}
+      <section className="py-14 sm:py-20 lg:py-28 bg-white border-b border-slate-100">
+        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="max-w-3xl">
+            <span className="text-xs font-semibold uppercase tracking-wider text-teal-700 block mb-3 font-mono">
+              Capabilities & Offerings
+            </span>
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-slate-950 font-sans leading-tight">
+              Enterprise Software Engineering Services
+            </h1>
+            <p className="text-slate-600 mt-4 text-sm sm:text-base lg:text-lg leading-relaxed font-normal">
+              We deliver custom software solutions, scalable cloud infrastructure, and intelligent automation systems tailored for mission-critical reliability.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Grid */}
+      <section className="py-16 sm:py-20 border-b border-slate-100">
+        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {servicesData.map((service) => (
+              <div
+                key={service.id}
+                className="p-6 sm:p-7 rounded-xl border border-slate-200/80 bg-white hover:border-teal-400 hover:shadow-xs transition-all flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-5">
+                    <div className="w-8 h-8 rounded-lg bg-teal-50 border border-teal-100 flex items-center justify-center group-hover:bg-teal-600 group-hover:text-white transition-colors">
+                      {iconMap[service.iconName]}
+                    </div>
+                    <span className="text-[11px] font-mono text-slate-400">
+                      {service.badge}
+                    </span>
+                  </div>
+
+                  <h2 className="text-base font-semibold text-slate-950 mb-2 group-hover:text-teal-800 transition-colors">
+                    {service.title}
+                  </h2>
+
+                  <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                    {service.shortDesc}
+                  </p>
+
+                  <div className="border-t border-slate-100 pt-4 mb-6">
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block mb-2 font-mono">
+                      Deliverables
+                    </span>
+                    <ul className="flex flex-col gap-2 text-xs text-slate-600">
+                      {service.capabilities.slice(0, 3).map((cap) => (
+                        <li key={cap.name} className="flex items-center gap-2">
+                          <span className="w-1 h-1 rounded-full bg-teal-500 shrink-0" />
+                          <span className="truncate">{cap.name}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="inline-flex items-center justify-between pt-4 border-t border-slate-100 text-xs font-medium text-slate-950 group-hover:text-teal-700 transition-colors"
+                >
+                  <span>Explore Blueprint</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Tech Stack Matrix Section */}
+      <section className="py-16 sm:py-20 bg-slate-50/50 border-b border-slate-100">
+        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
+          <div className="max-w-2xl mb-12 sm:mb-16">
+            <span className="text-xs font-semibold uppercase tracking-wider text-teal-700 block mb-2 font-mono">
+              Technology Stack
+            </span>
+            <h2 className="text-2.5xl sm:text-3xl lg:text-4xl font-bold font-sans tracking-tight text-slate-950">
+              Modern, Battle-Tested Tooling
+            </h2>
+            <p className="text-slate-600 text-xs sm:text-sm mt-3 font-normal">
+              Our engineering stack is chosen for maximum durability, type-safety, and horizontal scalability.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+            {techMatrices.map((matrix) => (
+              <div key={matrix.category} className="p-5 sm:p-6 rounded-xl bg-white border border-slate-200/80 hover:border-teal-400 transition-colors">
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-7 h-7 rounded-md bg-teal-50 border border-teal-100 flex items-center justify-center">
+                    {matrix.icon}
+                  </div>
+                  <h3 className="text-xs font-semibold text-slate-950">{matrix.category}</h3>
+                </div>
+                <ul className="flex flex-col gap-2 text-xs text-slate-600 font-mono">
+                  {matrix.items.map((item) => (
+                    <li key={item} className="flex items-center gap-2">
+                      <span className="w-1 h-1 rounded-full bg-teal-500" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10">
             <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 px-6 py-3.5 mt-2 rounded-xl bg-slate-955 text-white font-semibold hover:bg-slate-900 transition-colors text-sm shadow-sm cursor-pointer"
+              href="/technologies"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-teal-700 hover:text-teal-900 transition-colors"
             >
-              Request Custom Estimate
-              <ArrowRight className="w-4 h-4 text-white" />
+              <span>View Comprehensive Technology Matrix</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      <Footer />
+      {/* Bottom CTA */}
+      <section className="py-16 sm:py-20 bg-slate-950 text-white">
+        <div className="w-full max-w-[1800px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 max-w-2xl">
+          <span className="text-xs font-semibold uppercase tracking-wider text-teal-400 block mb-2 font-mono">
+            Engagement Readiness
+          </span>
+          <h2 className="text-2.5xl sm:text-3xl font-bold tracking-tight text-white mb-3">
+            Have a Specific Architectural Challenge?
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
+            Schedule a technical discovery session directly with one of our principal architects to review your technical requirements.
+          </p>
+          <Link
+            href="/contact"
+            className="min-h-[44px] inline-flex items-center gap-1.5 px-5 py-2.5 rounded-lg bg-teal-700 hover:bg-teal-600 text-white text-xs sm:text-sm font-medium transition-colors"
+          >
+            <span>Request Technical Discovery</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }
